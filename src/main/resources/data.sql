@@ -1,0 +1,6 @@
+INSERT INTO currency_exchange (id, currency_from, currency_to, conversion_multiple, environment) VALUES (1, 'USD', 'BRL', 5.46, '')
+INSERT INTO currency_exchange (id, currency_from, currency_to, conversion_multiple, environment) VALUES (2, 'USD', 'RUB', 77.65, '')
+INSERT INTO currency_exchange (id, currency_from, currency_to, conversion_multiple, environment) VALUES (3, 'BRL','USD', 0.18, '')
+INSERT INTO currency_exchange (id, currency_from, currency_to, conversion_multiple, environment) VALUES (4, 'BRL','RUB', 14.23, '')
+INSERT INTO currency_exchange (id, currency_from, currency_to, conversion_multiple, environment) VALUES (5, 'RUB','BRL', 0.07, '')
+INSERT INTO currency_exchange (id, currency_from, currency_to, conversion_multiple, environment) VALUES (6, 'RUB','USD', 0.013, '')
