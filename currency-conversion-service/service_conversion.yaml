@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: currency-conversion
+  name: currency-conversion
+  namespace: default
+  resourceVersion: "71037"
+spec:
+  ports:
+    - port: 8100
+      protocol: TCP
+      targetPort: 8100
+  selector:
+    app: currency-conversion
+  type: LoadBalancer
