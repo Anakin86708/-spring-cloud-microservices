@@ -27,7 +27,9 @@ public class CurrencyExchangeController {
     public CurrencyExchange retriveExchangeValue(@PathVariable String from, @PathVariable String to) {
         CurrencyExchange currencyExchange = getValidCurrencyExchange(from.toUpperCase(), to.toUpperCase());
         String port = env.getProperty("local.server.port");
-        currencyExchange.setEnvironment(port);
+        String host = env.getProperty("HOSTNAME");
+        String version = "v1";
+        currencyExchange.setEnvironment(port + " " + version + " " + host);
 
         logger.info(String.format("retrieveExchange called with %s and %s", from, to));
 
