@@ -8,7 +8,7 @@ metadata:
   name: currency-exchange
   namespace: default
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: currency-exchange
@@ -26,6 +26,14 @@ spec:
         - image: anakin86708/currency-exchange-service:0.0.3-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: currency-exchange-service
+          readinessProbe:
+            httpGet:
+              port: 8000
+              path: /actuator/health/readiness
+          livenessProbe:
+            httpGet:
+              port: 8000
+              path: /actuator/health/liveness
       restartPolicy: Always
 ---
 apiVersion: v1
