@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ariel</groupId>
     <artifactId>currency-conversion-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>currency-conversion-service</name>
     <description>Project for curency conversion</description>
     <properties>
@@ -25,11 +25,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-            <version>3.1.0</version>
         </dependency>
 
         <dependency>
@@ -49,7 +44,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -69,6 +65,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>anakin86708/${project.artifactId}:${project.version}</name>
+                    </image>
+                    <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                </configuration>
             </plugin>
         </plugins>
     </build>
