@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: currency-conversion
+  name: currency-conversion
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: currency-conversion
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: currency-conversion
+    spec:
+      containers:
+        - env:
+            - name: CURRENCY_EXCHANGE_URL
+              value: http://currency-exchange
+          image: anakin86708/currency-conversion-service:0.0.4-SNAPSHOT
+          imagePullPolicy: IfNotPresent
+          name: currency-conversion-service
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: currency-conversion
+  name: currency-conversion
+  namespace: default
+  resourceVersion: "71037"
+spec:
+  ports:
+    - port: 8100
+      protocol: TCP
+      targetPort: 8100
+  selector:
+    app: currency-conversion
+  type: LoadBalancer
